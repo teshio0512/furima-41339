@@ -6,14 +6,11 @@
 | nickname              | string  | null: false               |
 | email                 | string  | null: false, unique: true |
 | encrypted_password    | string  | null: false               |
-| password_confirmation | string  | null: false               |
 | family_name           | string  | null: false               |
 | first_name            | string  | null: false               |
 | kana_family_name      | string  | null: false               |
 | kana_first_name       | string  | null: false               |
-| birthyear_id          | integer | null: false               |
-| birthmonth_id         | integer | null: false               |
-| birthday_id           | integer | null: false               |
+| birthday              | date    | null: false               |
 
 ### Associtation
 - has_many :items
@@ -29,7 +26,7 @@
 | fee_id      | integer    | null: false                    |
 | region_id   | integer    | null: false                    |
 | day_id      | integer    | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 | price       | integer    | null: false                    |
 
 ### Association
@@ -37,10 +34,10 @@
 - has_one :purchase
 
 ## purchases テーブル
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| item _id   | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -51,12 +48,12 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_code      | string     | null: false                    |
-| prefecture_id  | integer    | null: false                    |
+| region_id      | integer    | null: false                    |
 | city           | string     | null: false                    |
 | street_address | string     | null: false                    |
 | building_name  | string     |                                |
 | phone_number   | string     | null: false                    |
-| purchase_id    | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
