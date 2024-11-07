@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     association :user
-    name            { Faker::Japanese::Name.name }
+    name            { Faker::Lorem.characters }
     explanation     { Faker::Lorem.paragraph }
     category_id     { rand(2..11) }
     state_id        { rand(2..7) }
