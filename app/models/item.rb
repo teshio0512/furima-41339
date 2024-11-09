@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :state
   belongs_to :fee
   belongs_to :region
-  belongs_to :day
+  belongs_to :delivery
 
   validates :name, presence: true
   validates :explanation, presence: true
@@ -15,6 +15,6 @@ class Item < ApplicationRecord
   validates :state_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :fee_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :region_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :day_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :delivery_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :image, presence: true, blob: { content_type: :image }
 end
