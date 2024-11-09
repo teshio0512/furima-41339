@@ -10,10 +10,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :explanation, presence: true
-  with_options presence: true, numericality: { in: 300..9_999_999 },
-               format: { with: /\A[0-9]+\z/ } do
-    validates :price
-  end
+  validates :price, presence: true, numericality: { only_integer: true, in: 300..9_999_999 }
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :state_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :fee_id, numericality: { other_than: 1, message: "can't be blank" }
