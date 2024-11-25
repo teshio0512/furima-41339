@@ -10,12 +10,11 @@ class PurchaseAddress
     validates :city
     validates :street_address
     validates :phone_number, format: { with: /\A[0-9]{10,11}\z/, message: 'is invalid. Input 10 or 11 half-width numbers' }
-    validates :purchase_id
   end
 
   def save
-    purchase = Purchase.create(item_id: params[:item_id], user_id: current_user.id)
-    Address.create(post_code: @purchase_address.post_code, region_id: @purchase_address.region_id, city: @purchase_address.city, street_address: @purchase_address.street_address,
-                   building_name: @purchase_address.building_name, phone_number: @purchase_address.phone_number, purchase_id: purchase.id)
+    purchase = Purchase.create(item_id:, user_id:)
+    Address.create(post_code:, region_id:, city:, street_address:,
+                   building_name:, phone_number:, purchase_id: purchase.id)
   end
 end
