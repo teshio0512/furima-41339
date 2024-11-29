@@ -94,12 +94,16 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <% if Item.where(id: @item.id + 1).present? %>
+      <a href=<%= item_path(@item.id + 1) %> class="change-item-btn">
+        ＜ 前の商品
+      </a>
+    <% end %>
+    <% if Item.where(id: @item.id - 1).present? %>
+      <a href=<%= item_path(@item.id - 1) %> class="change-item-btn">
+        後ろの商品 ＞
+      </a>
+    <% end %>
   </div>
 
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
