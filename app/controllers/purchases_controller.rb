@@ -42,7 +42,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    return unless user_signed_in? && @item.user.id == current_user.id || Purchase.exists?(item_id: @item.id)
+    return unless current_user.id == @item.user.id || Purchase.exists?(item_id: @item.id)
 
     redirect_to controller: :items, action: :index
   end
