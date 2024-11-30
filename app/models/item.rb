@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :fee
   belongs_to :region
   belongs_to :delivery
+  has_one :purchase
 
   validates :name, presence: true
   validates :explanation, presence: true
